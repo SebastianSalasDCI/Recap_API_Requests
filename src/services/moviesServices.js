@@ -21,9 +21,18 @@ const onSubmitHandler = async (search,type,year,setMoviesData,e) => {
   })
 }
 
+const SearchMovieInfo = ({imdbID,Type,Year},plot,setData) =>{
+  apiServices.searchSingleMovie({id:imdbID, type:Type, year:Year, plot})
+  .then(data=>{
+    setData(data)
+  })
+}
+
+
 const moviesServices = {
   searchMovies,
-  onSubmitHandler
+  onSubmitHandler,
+  SearchMovieInfo
 }
 
 

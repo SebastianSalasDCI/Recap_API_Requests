@@ -23,8 +23,25 @@ const searchManyMovies = async (query) =>{
 }
 
 
-const apiServices = {
-  searchManyMovies
-};
+const searchSingleMovie = async (query) => {
+  const config={
+    params:{
+      i: query.id,
+      y: query.year,
+      type: query.type,
+      plot: query.plot
+    }
+  }
+  return movieAxiosInstance.get('/',config)
+  .then(response=>{
+    return response.data
+  })
+}
 
-export default apiServices;
+
+const apiServices = {
+  searchManyMovies,
+  searchSingleMovie
+}
+
+export default apiServices
